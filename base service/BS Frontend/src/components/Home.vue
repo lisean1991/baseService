@@ -11,7 +11,10 @@
       <div id="mainpane">
         <Mainpane></Mainpane>
       </div>
-      <div id="service-info"></div>
+      <div id="service-info">
+        <RunInfo></RunInfo>
+        <Notify></Notify>
+      </div>
     </div>
   </div>
 </template>
@@ -21,8 +24,10 @@ import Header from './Header.vue'
 import Service from './system/Service'
 import System from './system/System'
 import Mainpane from './main/Mainpane'
+import Notify from './runtime/Notify'
+import RunInfo from './runtime/RunInfo'
 export default {
-  components: { Header, Service, System, Mainpane }
+  components: { Header, Service, System, Mainpane, Notify, RunInfo }
 }
 </script>
 

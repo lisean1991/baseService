@@ -47,17 +47,12 @@
       <div class="move-point14"></div>
     </div>
     <div class="main-box-bottom">
-      <div v-for="count in 4" :key="count+bottom" class="main-box-bottom-item">
-        <div v-for="count1 in 3" :key="count1+bottom1" class="img-box">
+      <div v-for="count in 4" :key="count+'bottom'" class="main-box-bottom-item">
+        <div v-for="count1 in 3" :key="count1+'bottom1'" class="img-box">
           <img src="../../assets/img/Center_map_icon_13.png" class="img-center-map"/>
           <div class="img-line"></div>
         </div>
-        <div class="img-line1">
-<!--          <div :class="'move-point'+ count"></div>-->
-        </div>
-<!--        -->
-<!--        <img src="../../assets/img/Center_map_icon_13.png" class="img-center-map"/>-->
-<!--        <img src="../../assets/img/Center_map_icon_13.png" class="img-center-map"/>-->
+        <div class="img-line1"></div>
       </div>
       <div class="img-line2"></div>
       <div class="middle-point">
