@@ -13,11 +13,12 @@ const getters = {
 
 // actions
 const actions = {
-  async getPublicData ({ commit, state }) {
-    const result = await publicInfoApi.readPublicData()
-    if (result) {
-      commit('setPublicData', result)
-    }
+  getPublicData ({ commit, state }) {
+    publicInfoApi.readPublicData().then(result => {
+      if (result) {
+        commit('setPublicData', result)
+      }
+    })
   }
 }
 

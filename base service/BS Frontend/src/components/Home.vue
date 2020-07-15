@@ -8,7 +8,9 @@
         <System></System>
         <Service></Service>
       </div>
-      <div id="mainpane"></div>
+      <div id="mainpane">
+        <Mainpane></Mainpane>
+      </div>
       <div id="service-info"></div>
     </div>
   </div>
@@ -18,8 +20,9 @@
 import Header from './Header.vue'
 import Service from './system/Service'
 import System from './system/System'
+import Mainpane from './main/Mainpane'
 export default {
-  components: { Header, Service, System }
+  components: { Header, Service, System, Mainpane }
 }
 </script>
 
@@ -36,14 +39,14 @@ export default {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: rgba(0,0,0,0.85);
+    background-color: #330033;
     height: 100%;
     width: 100%;
     display: block;
   }
 
   #header {
-    height: 40px;
+    height: 55px;
     width: 100%;
   }
 

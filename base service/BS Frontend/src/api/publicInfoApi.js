@@ -5,7 +5,7 @@ const readPublicData = async () => {
     resolve({
       number: 666,
       date: new Date(),
-      location: '四川省成都市天府五街'
+      location: '成都市'
     })
   })
 }

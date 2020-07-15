@@ -1,0 +1,53 @@
+.box-border {
+  position: absolute;
+  height: 3px;
+  width: 3px;
+}
+
+.box-border-left-top {
+  top: 0;
+  left: 0;
+  border-left: 2px solid darkslateblue;
+  border-top: 2px solid darkslateblue;
+}
+
+.box-border-left-bottom {
+  left: 0;
+  bottom: 0;
+  border-left: 2px solid darkslateblue;
+  border-bottom: 2px solid darkslateblue;
+}
+
+.box-border-right-top {
+  right: 0;
+  top: 0;
+  border-top: 2px solid darkslateblue;
+  border-right: 2px solid darkslateblue;
+}
+
+.box-border-right-bottom {
+  right: 0;
+  bottom: 0;
+  border-bottom: 2px solid darkslateblue;
+  border-right: 2px solid darkslateblue;
+}
+
+.box-text {
+  padding: 0 4px;
+  line-height: 20px;
+}
+
+.boxHeader{
+  height: 20px;
+  border: 1px solid darkslateblue;
+  position: relative;
+}
+
+.end-line {
+  width: 100%;
+  height: 4px;
+  background-image: linear-gradient(darkslateblue, dodgerblue);
+  margin-top: 10px;
+}
+
+
