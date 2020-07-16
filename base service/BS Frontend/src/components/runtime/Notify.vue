@@ -94,9 +94,10 @@ export default {
   }
 
   .notify-item {
-    height: calc(100% - 56px);
+    height: calc(100% - 105px);
     width: 100%;
     overflow-y: auto;
+    background-color: rgba(255,255,255,0.1);
   }
   .notify-item-box{
     height: 30px;

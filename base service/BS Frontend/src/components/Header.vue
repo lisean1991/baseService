@@ -111,16 +111,19 @@ export default {
     height: 55px;
     padding-top: 4px;
     margin-left: 16px;
+    width: 100%;
   }
 
   .img-center {
     height: 55px;
-    margin-left: -7px;
+    /*margin-left: -7px;*/
+    width: 100%;
   }
 
   .img-end {
     height: 52px;
     padding-top: 8px;
-    margin-left: 10px;
+    margin-left: -6%;
+    width: 100%;
   }
 </style>

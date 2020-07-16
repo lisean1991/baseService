@@ -26,8 +26,24 @@ import System from './system/System'
 import Mainpane from './main/Mainpane'
 import Notify from './runtime/Notify'
 import RunInfo from './runtime/RunInfo'
+// const defaultWidth = 1680
+// const defaultHeight = 939
 export default {
-  components: { Header, Service, System, Mainpane, Notify, RunInfo }
+  data: () => {
+    return {
+      resize: false
+    }
+  },
+  components: { Header, Service, System, Mainpane, Notify, RunInfo },
+  methods: {},
+  mounted () {
+    // window.addEventListener('resize', () => {
+    //   this.resize = !this.resize
+    // })
+  },
+  beforeUpdate () {
+    // this.scaleScreen()
+  }
 }
 </script>
 
@@ -39,12 +55,13 @@ export default {
     overflow: hidden;
     color: white;
     font-size: 12px;
+    background-color: rgba(0,0,0,0.75);
   }
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #330033;
+    background-color: rgba(0,0,0,0.75);
     height: 100%;
     width: 100%;
     display: block;

@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import PublicInfo from './modules/publicInfo'
 import SystemInfo from './modules/systemInfo'
 import ServiceInfo from './modules/serviceInfo'
+import Mainpane from './modules/mainpane'
+import Runtime from './modules/runtime'
 
 Vue.use(Vuex)
 
@@ -12,7 +14,9 @@ export default new Vuex.Store({
   modules: {
     PublicInfo,
     SystemInfo,
-    ServiceInfo
+    ServiceInfo,
+    Mainpane,
+    Runtime
   },
   strict: debug,
   plugins: []

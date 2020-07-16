@@ -8,30 +8,30 @@
       <div class="box-border box-border-right-bottom"></div>
     </div>
     <div class="chart-box">
-      <div id="chartGauge1" style="width:100%; height:80%;"></div>
-      <div id="chartGauge" style="width:100%; height:80%;"></div>
+      <div id="chartGauge1" style="width:100%; height:100%;"></div>
+      <div id="chartGauge" style="width:100%; height:100%;"></div>
     </div>
     <div class="store-rate-box">存储使用率
       <div class="store-rate-box-item">
-        <div class="store-rate-box-content" :style="'width:'+ storeRate"></div>
+        <div class="store-rate-box-content" :style="'width:'+ currentChoose.storeRate * 100 + '%'"></div>
       </div>
     </div>
     <div class="other-rate">
       <div class="other-rate-item">
         <div class="other-rate-box">
-          <div class="other-rate-content">43</div>
+          <div class="other-rate-content">{{currentChoose.storeIO}}</div>
         </div>
         <div class="other-rate-title">存储IO</div>
       </div>
       <div class="other-rate-item">
         <div class="other-rate-box">
-          <div class="other-rate-content">43</div>
+          <div class="other-rate-content">{{currentChoose.processNumber}}</div>
         </div>
         <div class="other-rate-title">进程数量</div>
       </div>
       <div class="other-rate-item">
         <div class="other-rate-box">
-          <div class="other-rate-content">43</div>
+          <div class="other-rate-content">{{currentChoose.jdbcNumber}}</div>
         </div>
         <div class="other-rate-title">JDBC连接数</div>
       </div>
@@ -41,7 +41,7 @@
       <div class="left-border"></div>
       <div class="right-border"></div>
       <div class="point-box">
-        <div :key="sy.id" v-for="sy in systemList" :class="sy.id === currentChoose.id ? 'point-choose' : 'point'"></div>
+        <div :key="sy.id" v-for="sy in systemRunList" :class="sy.id === currentChoose.id ? 'point-choose' : 'point'"></div>
       </div>
     </div>
     <div class="end-line"></div>
@@ -57,19 +57,19 @@ export default {
     return {
       chartGauge: null,
       chartGauge1: null,
-      storeRate: '45%'
+      currentCarouselIndex: 0
     }
   },
   computed: {
     ...mapState({
-      currentChoose: state => state.ServiceInfo.currentChoose,
-      systemList: state => state.ServiceInfo.systemList
+      currentChoose: state => state.Runtime.currentChoose,
+      systemRunList: state => state.Runtime.systemRunList
     })
   },
   methods: {
-    ...mapActions('ServiceInfo', [
-      'getChooseSystemInfo',
-      'getAllSystemInfo'
+    ...mapActions('Runtime', [
+      'getRunSystemDataById',
+      'getAllRunSystemData'
     ]),
     drawLineChart () {
       this.chartGauge = echarts.init(document.getElementById('chartGauge'))
@@ -124,7 +124,7 @@ export default {
               fontSize: 12
             }
           },
-          data: [{value: 50, name: ''}]
+          data: [{value: this.currentChoose.cacheRate, name: ''}]
         }]
       }
 
@@ -177,13 +177,18 @@ export default {
               fontSize: 12
             }
           },
-          data: [{value: 70, name: ''}]
+          data: [{value: this.currentChoose.cpuRate, name: ''}]
         }]
       }
 
       this.chartGauge1.setOption(option)
 
       this.chartGauge.setOption(option1)
+    },
+    carousel () {
+      this.currentCarouselIndex = this.currentCarouselIndex + 1 >= this.systemRunList.length ? 0 : this.currentCarouselIndex + 1
+      this.getRunSystemDataById(this.systemRunList[this.currentCarouselIndex].id)
+      setTimeout(this.carousel, 3000)
     }
   },
   beforeUpdate () {
@@ -191,8 +196,10 @@ export default {
   },
   mounted () {
     this.drawLineChart()
+    setTimeout(this.carousel, 3000)
   },
   created () {
+    this.getAllRunSystemData();
   }
 }
 </script>
