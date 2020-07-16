@@ -102,7 +102,8 @@ export default {
     return {
       showSystem: 0,
       cleckedSystem: {},
-      top_line_class: ''
+      top_line_class: '',
+      sizeChange: false
     }
   },
   components: {DialogBottomSystem, DIalogMiddleSystemLeft},
@@ -115,7 +116,9 @@ export default {
   },
   methods: {
     ...mapActions('Mainpane', ['getLayerSystemData']),
-    scaleScreen: () => {
+    scaleScreen: function () {
+      this.excuted = true
+      this.sizeChange = !this.sizeChange
       let currentWidthRate = window.innerWidth / defaultWidth
       let crrentHeghtRate = window.innerHeight / defaultHeight
       let rate = crrentHeghtRate > currentWidthRate ? currentWidthRate : crrentHeghtRate
@@ -136,6 +139,13 @@ export default {
     }
   },
   mounted () {
+    this.excuted = true
+    window.addEventListener('resize', function () {
+      if (this.excuted) {
+        this.excuted = false
+        setTimeout(this.scaleScreen, 500)
+      }
+    }.bind(this))
     // this.scaleScreen()
   },
   created () {

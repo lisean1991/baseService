@@ -36,11 +36,9 @@ export default {
   },
   components: { Header, Service, System, Mainpane, Notify, RunInfo },
   methods: {},
-  mounted () {
-    // window.addEventListener('resize', () => {
-    //   this.resize = !this.resize
-    // })
-  },
+  // mounted () {
+  //
+  // },
   beforeUpdate () {
     // this.scaleScreen()
   }
